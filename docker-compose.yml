@@ -1,0 +1,24 @@
+version: "2"
+services:
+  next:
+    container_name: next
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    env_file: ./.env
+    volumes:
+      - ./:/app
+    working_dir: /app
+    ports:
+      - "300:300"
+      - "3000:3000"
+    tty: true
+
+  blog-ssg:
+    container_name: blog-ssg
+    image: nginx
+    volumes:
+      - ./out:/var/www:ro
+      - ./default.conf:/etc/nginx/conf.d/default.conf
+    ports:
+      - "8080:80"
