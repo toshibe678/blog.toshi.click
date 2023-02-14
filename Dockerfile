@@ -32,5 +32,6 @@ EXPOSE 5177
 
 USER node
 
-CMD ["yarn", "dev"]
+CMD ["@"]
+#CMD ["yarn", "dev"]
 #CMD ["node", "./build"]
