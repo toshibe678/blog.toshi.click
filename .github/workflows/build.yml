@@ -11,8 +11,7 @@ on:
       - develop
 
 jobs:
-
-  front_build:
+  blog_build:
     # 実行するインスタンス
     runs-on: ubuntu-latest
     # nodeのバージョン一覧
@@ -22,11 +21,11 @@ jobs:
     # 各ステップの実行定義
     steps:
       # チェックアウト
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@main
 
       # 使用するnodeのバージョンを指定
       - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@main
         with:
           node-version: ${{ matrix.node-version }}
 
