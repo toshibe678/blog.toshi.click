@@ -4,10 +4,9 @@ build:
 	@docker compose build
 
 create:
-# 	@docker run --rm -it -v $PWD:/app -w /app node:16 yarn create next-app --typescript
+	@docker run --rm -it -v $PWD:/app -w /app node:18 yarn create astro
 	@sudo chown -R toshi:toshi ./
-	@docker compose run --rm next yarn install
-	@docker compose run --rm next yarn build
+	@docker compose run --rm blog yarn install
 
 up:
 	@sudo chown -R toshi:toshi ./
@@ -22,7 +21,7 @@ refresh:
 	@docker compose start
 
 del:
-	@docker compose down
+	@docker compose down -v
 
 exec:
 	@sudo chown -R toshi:toshi ./
