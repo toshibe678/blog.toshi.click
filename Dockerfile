@@ -19,11 +19,8 @@ RUN apt-get update \
 WORKDIR /app
 
 
-
-
-
-## Svelteが動くポートを開けておく
-EXPOSE 5173
+## astroが動くポートを開けておく
+EXPOSE 3000
 
 #USER node
 

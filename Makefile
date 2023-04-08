@@ -10,7 +10,7 @@ create:
 
 up:
 	@sudo chown -R toshi:toshi ./
-	@docker compose up -d
+	@docker compose up -d --force-recreate
 
 run:
 	@docker compose run -p 3000:3000 blog bash
