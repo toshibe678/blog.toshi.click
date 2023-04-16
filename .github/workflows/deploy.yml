@@ -15,6 +15,9 @@ jobs:
       credentials:
         username: ${{ github.actor }}
         password: ${{ secrets.GITHUB_TOKEN }}
+      permissions:
+        contents: read
+        packages: read
     # nodeのバージョン一覧
     strategy:
       matrix:
