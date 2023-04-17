@@ -7,6 +7,7 @@ on:
       - develop
     paths:
       - "blog/**"
+      - ".github/workflows/deploy*"
 
 jobs:
   blog_build:
@@ -18,7 +19,7 @@ jobs:
       packages: write
 
     container:
-      image: ghcr.io/toshibe678/blog.toshi.click/node:latest:latest
+      image: ghcr.io/toshibe678/blog.toshi.click/node:latest
       credentials:
         username: ${{ github.actor }}
         password: ${{ secrets.GITHUB_TOKEN }}
