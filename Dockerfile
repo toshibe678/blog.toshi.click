@@ -18,7 +18,6 @@ RUN apt-get update \
 
 WORKDIR /app
 
-
 ## astroが動くポートを開けておく
 EXPOSE 3000
 

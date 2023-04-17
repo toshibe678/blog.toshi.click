@@ -5,6 +5,8 @@ on:
     branches:
       - main
       - develop
+    paths:
+      - "blog/**"
 
 jobs:
   blog_build:
@@ -16,7 +18,7 @@ jobs:
       packages: write
 
     container:
-      image: ghcr.io/toshibe678/infra/tools:latest
+      image: ghcr.io/toshibe678/blog.toshi.click/node:latest:latest
       credentials:
         username: ${{ github.actor }}
         password: ${{ secrets.GITHUB_TOKEN }}
@@ -29,12 +31,6 @@ jobs:
     steps:
       # チェックアウト
       - uses: actions/checkout@main
-
-      # 使用するnodeのバージョンを指定
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@main
-        with:
-          node-version: ${{ matrix.node-version }}
 
       # パッケージのインストール
       - name: yarn install
