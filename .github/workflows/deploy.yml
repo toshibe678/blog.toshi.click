@@ -13,13 +13,13 @@ jobs:
 
     permissions:
       contents: read
-      packages: read
+      packages: write
 
-#    container:
-#      image: ghcr.io/toshibe678/infra/tools:latest
-#      credentials:
-#        username: ${{ github.actor }}
-#        password: ${{ secrets.GITHUB_TOKEN }}
+    container:
+      image: ghcr.io/toshibe678/infra/tools:latest
+      credentials:
+        username: ${{ github.actor }}
+        password: ${{ secrets.GITHUB_TOKEN }}
 
     # nodeのバージョン一覧
     strategy:
