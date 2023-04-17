@@ -10,16 +10,16 @@ jobs:
   blog_build:
     # 実行するインスタンス
     runs-on: self-hosted
-    
+
     permissions:
       contents: read
       packages: read
 
-    container:
-      image: ghcr.io/toshibe678/infra/tools
-      credentials:
-        username: ${{ github.actor }}
-        password: ${{ secrets.GITHUB_TOKEN }}
+#    container:
+#      image: ghcr.io/toshibe678/infra/tools:latest
+#      credentials:
+#        username: ${{ github.actor }}
+#        password: ${{ secrets.GITHUB_TOKEN }}
 
     # nodeのバージョン一覧
     strategy:
