@@ -12,9 +12,13 @@ RUN sed -i -E 's/# (ja_JP.UTF-8)/\1/' /etc/locale.gen \
 
 # コンテナのデバッグ等で便利なソフト導入しておく
 RUN apt-get update \
-    && apt-get -y install vim git curl wget zip unzip net-tools iproute2 iputils-ping \
+    && apt-get -y install vim git curl wget zip unzip net-tools iproute2 iputils-ping pip \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
+
+# install aws-cli cfn-lint
+RUN python3 -m pip install --upgrade pip \
+    && python3 -m pip install awscli
 
 WORKDIR /app
 
