@@ -1,37 +1,31 @@
-# ビルド用
-FROM node:16 as builder
+FROM node:18
+
+# Debian set Locale
+# tzdataのapt-get時にtimezoneの選択で止まってしまう対策でDEBIAN_FRONTENDを定義する
+ENV DEBIAN_FRONTEND=noninteractive
+# debian japanease
+RUN apt-get update && apt-get install -y locales \
+  && apt-get clean \
+  && rm -rf /var/lib/apt/lists/*
+RUN sed -i -E 's/# (ja_JP.UTF-8)/\1/' /etc/locale.gen \
+  && locale-gen
+
+# コンテナのデバッグ等で便利なソフト導入しておく
+RUN apt-get update \
+    && apt-get -y install vim git curl wget zip unzip net-tools iproute2 iputils-ping pip \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
+
+# install aws-cli cfn-lint
+RUN python3 -m pip install --upgrade pip \
+    && python3 -m pip install awscli
 
 WORKDIR /app
 
-## パッケージをインストール
-COPY package.json ./
-COPY yarn.lock ./
-#RUN yarn ci
-
-COPY . ./
-
-RUN yarn build
-
-# 実行用
-FROM node:16
-WORKDIR /app
-
-## ビルド用のレイヤからコピーする
-#COPY --from=builder /app/build ./build
-COPY --from=builder /app/yarn.lock .
-COPY --from=builder /app/node_modules ./node_modules
-
-## Svelteが動く3000ポートを開けておく
+## astroが動くポートを開けておく
 EXPOSE 3000
 
-EXPOSE 5173
-EXPOSE 5174
-EXPOSE 5175
-EXPOSE 5176
-EXPOSE 5177
+#USER node
 
-USER node
-
-CMD ["@"]
-#CMD ["yarn", "dev"]
-#CMD ["node", "./build"]
+#CMD ["yarn","dev"]
+CMD ["bash"]

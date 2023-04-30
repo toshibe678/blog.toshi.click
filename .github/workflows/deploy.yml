@@ -1,0 +1,59 @@
+name: Run build and deploy
+
+on:
+  push:
+    branches:
+      - main
+      - develop
+    paths:
+      - "blog/**"
+      - ".github/workflows/deploy*"
+
+jobs:
+  blog_build:
+    # 実行するインスタンス
+    runs-on: self-hosted
+
+    permissions:
+      contents: read
+      packages: write
+
+    container:
+      image: ghcr.io/toshibe678/blog.toshi.click/node:latest
+      credentials:
+        username: ${{ github.actor }}
+        password: ${{ secrets.GITHUB_TOKEN }}
+
+    # nodeのバージョン一覧
+    strategy:
+      matrix:
+        node-version: ['18.x']
+    # 各ステップの実行定義
+    steps:
+      # チェックアウト
+      - uses: actions/checkout@main
+
+      # パッケージのインストール
+      - name: yarn install
+        run: yarn --cwd ./blog install
+
+      # アプリのビルド
+      - name: build
+        run: yarn --cwd ./blog build
+
+      # S3にデプロイ
+      - name: Stg Deploy
+        if: ${{ github.ref_name == 'develop' }}
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.S3AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.S3AWS_SECRET_ACCESS_KEY }}
+        # S3のbucket-for-deploying-react-projectバケットにデプロイ
+        run: aws s3 sync ./blog/dist s3://origin-bucket-stg.blog.toshi.click --delete --size-only --region ap-northeast-1
+
+#      - name: Prod Deploy
+#        if: ${{ github.ref_name == 'main' }}
+#        env:
+#          AWS_ACCESS_KEY_ID: ${{ secrets.S3AWS_ACCESS_KEY_ID }}
+#          AWS_SECRET_ACCESS_KEY: ${{ secrets.S3AWS_SECRET_ACCESS_KEY }}
+#        # S3のbucket-for-deploying-react-projectバケットにデプロイ
+#        run: aws s3 sync ./blog/dist s3://origin-bucket.blog.toshi.click --delete --size-only --region ap-northeast-1

@@ -1,0 +1,27 @@
+---
+import HeaderLink from './HeaderLink.astro';
+import { SITE_TITLE } from '../consts';
+---
+
+<header>
+  <h2>
+    {SITE_TITLE}
+  </h2>
+  <nav>
+    <HeaderLink href="/">Home</HeaderLink>
+    <HeaderLink href="/blog">Blog</HeaderLink>
+    <HeaderLink href="https://twitter.com/toshibe_678" target="_blank">Twitter</HeaderLink>
+    <HeaderLink href="https://github.com/toshi-click" target="_blank">GitHub</HeaderLink>
+    <HeaderLink href="https://misskey.io/@toshibe" target="_blank">Misskey.io</HeaderLink>
+    <HeaderLink href="https://www.facebook.com/toshiyuki.abe.777/" target="_blank">facebook</HeaderLink>
+    <HeaderLink href="https://www.instagram.com/toshibe_678/" target="_blank">Instagram</HeaderLink>
+  </nav>
+</header>
+<style>
+  header {
+    margin: 0em 0 2em;
+  }
+  h2 {
+    margin: 0.5em 0;
+  }
+</style>
