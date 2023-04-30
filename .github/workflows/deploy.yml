@@ -56,4 +56,4 @@ jobs:
           AWS_ACCESS_KEY_ID: ${{ secrets.S3AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.S3AWS_SECRET_ACCESS_KEY }}
         # S3のbucket-for-deploying-react-projectバケットにデプロイ
-        run: aws s3 sync ./blog/dist s3://origin-bucket.blog.toshi.click --delete --size-only --region ap-northeast-1
+        run: aws s3 sync ./blog/dist s3://origin-bucket-blog.toshi.click --delete --size-only --region ap-northeast-1
