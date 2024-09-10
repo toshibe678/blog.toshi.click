@@ -1,4 +1,4 @@
-FROM node:18
+FROM node:22
 
 # Debian set Locale
 # tzdataのapt-get時にtimezoneの選択で止まってしまう対策でDEBIAN_FRONTENDを定義する
@@ -19,6 +19,28 @@ RUN apt-get update \
 # install aws-cli cfn-lint
 RUN python3 -m pip install --upgrade pip \
     && python3 -m pip install awscli
+
+# setup playwright
+RUN apt-get update && apt-get install -y \
+    xvfb \
+    libxi6 \
+    libgconf-2-4 \
+    libnss3 \
+    libatk-bridge2.0-0 \
+    libatk1.0-0 \
+    libgtk-3-0 \
+    libxcomposite1 \
+    libxrandr2 \
+    libxss1 \
+    libxtst6 \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/* \
+    && npm install -g playwright \
+    && npx playwright install \
+    && npx playwright install-deps \
+    && npx playwright install firefox \
+    && npx playwright install webkit \
+    && npx playwright install chromium
 
 WORKDIR /app
 
