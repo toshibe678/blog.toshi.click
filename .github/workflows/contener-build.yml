@@ -1,15 +1,20 @@
 name: images Docker image build and push
-
+run-name: images Docker image build and push [${{github.event.number}}]
 env:
   LANG: ja_JP.UTF-8
 
 on:
+  workflow_dispatch:
   push:
     branches:
       - main
       - develop
     paths:
       - "Dockerfile"
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
   images_push_to_registry:
@@ -51,7 +56,7 @@ jobs:
           file: ./Dockerfile
           platforms: linux/amd64,linux/arm64
           tags: |
-            ghcr.io/${{ github.repository_owner }}/blog.toshi.click/node:latest
+            ghcr.io/${{ github.repository_owner }}/blog.toshi.click/blog:latest
           labels: |
             org.opencontainers.image.source=${{ github.event.repository.clone_url }}
           cache-from: type=local,src=/tmp/.buildx-cache
