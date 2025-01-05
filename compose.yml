@@ -1,7 +1,7 @@
-version: "2"
 services:
   blog:
     container_name: blog
+#    image: ghcr.io/toshibe678/blog.toshi.click/blog:latest
     build:
       context: ./
       dockerfile: Dockerfile
@@ -14,12 +14,4 @@ services:
     ports:
       - "3000:3000"
     tty: true
-#
-#  blog-ssg:
-#    container_name: blog-ssg
-#    image: nginx
-#    volumes:
-#      - ./out:/var/www:ro
-#      - ./default.conf:/etc/nginx/conf.d/default.conf
-#    ports:
-#      - "8080:80"
+

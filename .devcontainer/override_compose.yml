@@ -1,0 +1,3 @@
+services:
+  blog:
+    env_file: ./.env
