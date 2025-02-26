@@ -7,7 +7,7 @@
   // devcontainerでshellなどで使用するdocker composeのservice名
   "service": "blog",
   // 指定したserviceコンテナのworkspaceフォルダ
-  "workspaceFolder": "/app/blog2",
+  "workspaceFolder": "/app/blog",
 
   // Features to add to the dev container. More info: https://containers.dev/features.
   // https://github.com/microsoft/vscode-dev-containers/tree/v0.245.2/script-library/docs
@@ -46,6 +46,7 @@
         "msjsdiag.debugger-for-chrome",
         "firefox-devtools.vscode-firefox-debug",
         "astro-build.astro-vscode",
+        "unifiedjs.vscode-mdx",
         "dbaeumer.vscode-eslint",
         "esbenp.prettier-vscode",
         "MylesMurphy.prettify-ts",
