@@ -11,7 +11,7 @@ RUN npm install -g playwright \
 WORKDIR /app
 
 ## astroが動くポートを開けておく
-EXPOSE 3000
+EXPOSE 4321
 
 #USER node
 

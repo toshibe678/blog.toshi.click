@@ -3,24 +3,21 @@
   "name": "blog",
   // .devcontainerディレクトリからの相対パスで記述する
   // 複数指定することで -fオプションと同じ動きになるので、最後に前述のcommand上書き用のファイルを指定する
-  "dockerComposeFile": [
-    "../compose.yml",
-    "override_compose.yml"
-  ],
+  "dockerComposeFile": ["../compose.yml", "override_compose.yml"],
   // devcontainerでshellなどで使用するdocker composeのservice名
   "service": "blog",
   // 指定したserviceコンテナのworkspaceフォルダ
-  "workspaceFolder": "/app",
+  "workspaceFolder": "/app/blog2",
 
   // Features to add to the dev container. More info: https://containers.dev/features.
   // https://github.com/microsoft/vscode-dev-containers/tree/v0.245.2/script-library/docs
   // にあるスクリプトをdevcontainerで実行できるプラグイン機構
-//  "features": {
-//    "docker-in-docker": {
-//      "version": "latest",
-//      "dockerDashComposeVersion": "v2"
-//    }
-//  },
+  //  "features": {
+  //    "docker-in-docker": {
+  //      "version": "latest",
+  //      "dockerDashComposeVersion": "v2"
+  //    }
+  //  },
 
   // Configure tool-specific properties.
   "customizations": {
@@ -28,39 +25,55 @@
       // devcontainerに自動でインストールするvscode extention
       // extentionのページの歯車アイコンをクリックすると出てくる「拡張機能 ID のコピー」というやつからここに貼るIDを知ることができる
       "extensions": [
-        "github.copilot",
+        "ms-ceintl.vscode-language-pack-ja",
+        "EditorConfig.EditorConfig",
+        "davidanson.vscode-markdownlint",
+        "shd101wyy.markdown-preview-enhanced",
         "streetsidesoftware.code-spell-checker",
-        "naumovs.color-highlight",
+        "oderwat.indent-rainbow",
+        "mechatroner.rainbow-csv",
+        "natqe.reload",
+        "SimonSiefke.svg-preview",
+        "IBM.output-colorizer",
+        "aaron-bond.better-comments",
+        "mosapride.zenkaku",
         "ms-azuretools.vscode-docker",
+        "github.copilot",
+        "github.copilot-chat",
+        "saoudrizwan.claude-dev",
         "mhutchie.git-graph",
+        "eamodio.gitlens",
+        "msjsdiag.debugger-for-chrome",
+        "firefox-devtools.vscode-firefox-debug",
+        "astro-build.astro-vscode",
         "dbaeumer.vscode-eslint",
-        "stylelint.vscode-stylelint",
         "esbenp.prettier-vscode",
-        "ms-python.python",
-        "python.debugpy",
-        "golang.Go"
+        "MylesMurphy.prettify-ts",
+        "YoavBls.pretty-ts-errors"
       ],
       // devcontainerとして開く設定カスタマイズ
       "settings": {
-        "stylelint.validate": ["css", "scss"],
+        "terminal.integrated.shell.linux": "/bin/bash",
         "editor.formatOnSave": true,
         "editor.defaultFormatter": "esbenp.prettier-vscode",
         "editor.codeActionsOnSave": {
-          "source.fixAll.eslint": true,
-          "source.fixAll.stylelint": true
+          "source.fixAll.eslint": true
         },
+        "files.insertFinalNewline": true,
+        "files.trimFinalNewlines": true,
         // typescript で絶対パスで import する設定
-        "typescript.preferences.importModuleSpecifier": "non-relative",
-        "go.toolsManagement.checkForUpdates": "local",
-        "go.useLanguageServer": true,
-        "go.gopath": "/go",
-        "go.goroot": "/usr/local/go"
-      }
-    },
+        "typescript.preferences.importModuleSpecifier": "non-relative"
+      },
+      // devcontainer 起動時にコンテナを新規作成した後にコンテナ内で実行させるコマンドを指定することができます。
+      // コンテナ作成時なので毎回起動時に実行されるわけではないので注意
+      "postCreateCommand": "npm install"
+      // devcontainer 起動時にコンテナを新規作成する前に ホスト側 で実行されるコマンドを設定
+      //"initializeCommand": "if [ ! -f .env.local ];then cp .devcontainer/.env.sample .env.local;fi"
+    }
   },
 
   // 指定したポートがforwardされるようになる
-  "forwardPorts": [3000],
+  "forwardPorts": [4321],
 
   // Use 'postCreateCommand' to run commands after the container is created.
   // Dev Container 作成時に実行するコマンド
@@ -69,6 +82,6 @@
   // Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
   // devcontainerで開いたフォルダのファイルはこのユーザーに権限が無いと保存などができない
   // コンテナによって変わるので、適宜変更する
-  "remoteUser": "root",
-//  "remoteUser": "vscode"
+  "remoteUser": "root"
+  //  "remoteUser": "vscode"
 }
