@@ -1,7 +1,7 @@
 services:
   blog:
     container_name: blog
-#    image: ghcr.io/toshibe678/blog.toshi.click/blog:latest
+    #    image: ghcr.io/toshibe678/blog.toshi.click/blog:latest
     build:
       context: ./
       dockerfile: Dockerfile
