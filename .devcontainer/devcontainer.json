@@ -7,7 +7,7 @@
   // devcontainerでshellなどで使用するdocker composeのservice名
   "service": "blog",
   // 指定したserviceコンテナのworkspaceフォルダ
-  "workspaceFolder": "/app/blog",
+  "workspaceFolder": "/app",
 
   // Features to add to the dev container. More info: https://containers.dev/features.
   // https://github.com/microsoft/vscode-dev-containers/tree/v0.245.2/script-library/docs
