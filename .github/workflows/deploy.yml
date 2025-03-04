@@ -19,7 +19,7 @@ jobs:
       packages: write
 
     container:
-      image: ghcr.io/toshibe678/blog.toshi.click/node:latest
+      image: ghcr.io/toshibe678/blog.toshi.click/blog:latest
       credentials:
         username: ${{ github.actor }}
         password: ${{ secrets.GITHUB_TOKEN }}
