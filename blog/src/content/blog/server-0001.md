@@ -3,9 +3,7 @@ title: "サーバへのSSHログイン契機でメール通知"
 pubDate: "2017-11-25"
 updatedDate: "2022-05-10"
 description: ''
-image:
-    url: '/images/header/hawaii_rainbow.png' 
-    alt: ''
+heroImage: '/images/header/hawaii_rainbow.png' 
 tags: ['Linux','インフラ','セキュリティ']
 ---
 # 目的

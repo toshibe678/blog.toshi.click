@@ -3,9 +3,7 @@ title: "Fluentd間でログを自己証明書で暗号化して送る"
 pubDate: "2019-06-26"
 updatedDate: "2022-05-10"
 description: ''
-image:
-    url: '/images/header/magnifier_animal_neko.png' 
-    alt: ''
+heroImage: '/images/header/magnifier_animal_neko.png' 
 tags: ['Fluentd','インフラ','セキュリティ']
 ---
 

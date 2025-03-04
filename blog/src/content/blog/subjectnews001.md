@@ -2,9 +2,7 @@
 title: "#it業界クソ現場オブザイヤー2018厳選集"
 pubDate: "2018-11-20"
 description: ''
-image:
-    url: '/images/header/internet_enjou_sns_woman.png' 
-    alt: ''
+heroImage: '/images/header/internet_enjou_sns_woman.png' 
 tags: ['Twitter','ツイッター','トレンド','ハッシュタグ']
 ---
 https://twitter.com/nekobass9425/status/1064332784506830848

@@ -3,9 +3,7 @@ title: "Windows10 + WSL(Ubuntu18.04) + Docker Desktopで開発環境構築"
 pubDate: "2019-07-09"
 updatedDate: "2022-05-10"
 description: ''
-image:
-    url: '/images/header/computer_programming_woman.png' 
-    alt: ''
+heroImage: '/images/header/computer_programming_woman.png' 
 tags: ['Docker','Linux','Windows','WSL','インフラ','開発環境']
 ---
 ## TL;DR

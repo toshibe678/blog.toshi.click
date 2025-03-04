@@ -1,41 +1,57 @@
 ---
-// Import the global.css file here so that it is included on
-// all pages through the use of the <BaseHead /> component.
+// グローバルスタイルの読み込み
+// すべてのページで <BaseHead /> コンポーネントを使用することで、
+// global.css ファイルが全ページに適用されます
 import '../styles/global.css';
+import { SITE_TITLE } from '../consts';
 
-export interface Props {
-  title: string;
-  description: string;
-  image?: string;
+// コンポーネントのプロパティ定義
+interface Props {
+	title: string;        // ページタイトル
+	description: string;  // ページの説明
+	image?: string;       // OGP画像（省略可能）
 }
 
+// サイトのベースURLとページのパスを組み合わせて正規URLを生成
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
-const { title, description, image = '/placeholder-social.jpg' } = Astro.props;
+// デフォルト値を設定しながらプロパティを展開
+const { title, description, image = '/blog-placeholder-1.jpg' } = Astro.props;
 ---
 
-<!-- Global Metadata -->
+<!-- グローバルメタデータ：すべてのページに共通する基本的なメタタグ -->
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<link rel="sitemap" href="/sitemap-index.xml" />
+<link
+	rel="alternate"
+	type="application/rss+xml"
+	title={SITE_TITLE}
+	href={new URL('rss.xml', Astro.site)}
+/>
 <meta name="generator" content={Astro.generator} />
 
-<!-- Canonical URL -->
+<!-- フォント最適化：Webフォントを事前読み込みしてパフォーマンスを向上 -->
+<link rel="preload" href="/fonts/atkinson-regular.woff" as="font" type="font/woff" crossorigin />
+<link rel="preload" href="/fonts/atkinson-bold.woff" as="font" type="font/woff" crossorigin />
+
+<!-- 正規URL：検索エンジンに同じコンテンツの重複を防ぐために正規URLを指定 -->
 <link rel="canonical" href={canonicalURL} />
 
-<!-- Primary Meta Tags -->
+<!-- 主要メタタグ：検索結果に表示されるタイトルと説明 -->
 <title>{title}</title>
 <meta name="title" content={title} />
 <meta name="description" content={description} />
 
-<!-- Open Graph / Facebook -->
+<!-- Open Graph / Facebook：SNSでシェアされたときの表示を制御するメタタグ -->
 <meta property="og:type" content="website" />
 <meta property="og:url" content={Astro.url} />
 <meta property="og:title" content={title} />
 <meta property="og:description" content={description} />
 <meta property="og:image" content={new URL(image, Astro.url)} />
 
-<!-- Twitter -->
+<!-- Twitter Card：Twitterでシェアされたときの表示を制御するメタタグ -->
 <meta property="twitter:card" content="summary_large_image" />
 <meta property="twitter:url" content={Astro.url} />
 <meta property="twitter:title" content={title} />
