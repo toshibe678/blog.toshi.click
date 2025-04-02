@@ -1,108 +1,57 @@
-# System Patterns: Technical Blog Platform
+# システムパターン
 
-## Architecture Overview
+## アーキテクチャ概要
+- Astroベースの静的サイトジェネレーター
+- ファイルベースのルーティング
+- Markdownコンテンツ管理
+- コンポーネントベースの設計
 
+## 主要コンポーネント
+1. ページコンポーネント
+   - インデックスページ（/pages/index.astro）
+   - ブログ記事ページ（/pages/blog/[...slug].astro）
+   - アバウトページ（/pages/about.astro）
+
+2. レイアウトコンポーネント
+   - ベースレイアウト
+   - ブログ記事レイアウト
+   - 共通ヘッダー/フッター
+
+3. ユーティリティ機能
+   - 日付フォーマット
+   - メタデータ管理
+   - RSS生成
+
+## データフロー
 ```mermaid
 graph TD
-    Content[Content/*.md] --> Build[Astro Build Process]
-    Build --> Static[Static Site Output]
+    MD[Markdownファイル] --> AC[Astroコンテンツ]
+    AC --> SP[静的ページ生成]
+    SP --> DP[デプロイ]
     
-    subgraph Components
-        BaseHead[BaseHead]
-        Header[Header]
-        Footer[Footer]
-        BlogPost[BlogPost Layout]
-    end
-    
-    subgraph Pages
-        Index[Index Page]
-        About[About Page]
-        Blog[Blog Posts]
-        RSS[RSS Feed]
+    subgraph ビルドプロセス
+        MD
+        AC
+        SP
     end
 ```
 
-## Directory Structure
-```
-blog/
-├── public/          # Static assets
-├── src/
-│   ├── components/  # Reusable UI components
-│   ├── content/     # Blog posts and content
-│   ├── layouts/     # Page layouts
-│   ├── pages/       # Route pages
-│   ├── styles/      # Global styles
-│   └── utils/       # Utility functions
-```
+## 設計パターン
+1. ファイルベースルーティング
+   - URLstructureがディレクトリ構造と一致
+   - 動的ルーティングの活用
 
-## Key Design Patterns
+2. コンポーネント分割
+   - 再利用可能なUI部品
+   - 責務の明確な分離
+   - プロップスによるデータ受け渡し
 
-### Content Management
-- Content Collections pattern for blog posts
-- Markdown files with frontmatter for metadata
-- Static asset organization in public directory
-- Type-safe content schemas
+3. コンテンツ管理
+   - Markdownベースの記事管理
+   - フロントマターによるメタデータ制御
+   - 画像アセットの最適化
 
-### Component Architecture
-- Atomic design principles
-- Reusable component structure
-- Layout composition pattern
-- Type-safe props
-
-### Routing & Navigation
-- File-based routing
-- Static path generation
-- SEO-optimized URLs
-- RSS feed generation
-
-## Technical Decisions
-
-### Framework Choice: Astro
-- Optimal for content-heavy sites
-- Zero JavaScript by default
-- Component island architecture
-- Built-in Markdown support
-
-### Development Tools
-- TypeScript for type safety
-- ESLint for code quality
-- Prettier for formatting
-- Built-in dev server
-
-### Performance Patterns
-- Static site generation
-- Optimized asset loading
-- Minimal client-side JavaScript
-- Image optimization
-
-## Implementation Guidelines
-
-### Content Structure
-```typescript
-interface BlogPost {
-  title: string;
-  description: string;
-  pubDate: Date;
-  updatedDate?: Date;
-  heroImage?: string;
-  categories?: string[];
-}
-```
-
-### Component Patterns
-- Common props interfaces
-- Consistent naming conventions
-- Shared styling patterns
-- Component composition rules
-
-### Build & Deploy
-- Static site generation
-- Asset optimization
-- Cache strategies
-- Deploy previews
-
-## System Constraints
-- Content must be in Markdown
-- Images stored in public directory
-- TypeScript strict mode enabled
-- ESLint rules compliance
+## 技術的制約
+- 静的サイト生成による制限
+- ビルド時のパフォーマンス考慮
+- アセット最適化の必要性

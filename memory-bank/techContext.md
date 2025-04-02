@@ -1,141 +1,65 @@
-# Technical Context: Technical Blog Platform
+# 技術コンテキスト
 
-## Technology Stack
+## 開発環境
+- Node.js v22
+- Visual Studio Code
+- ESLint & Prettier
+- Git & GitHub
 
-### Core Technologies
-- **Framework**: Astro 5.3.0
-- **Language**: TypeScript
-- **Runtime**: Node.js 22
-- **Styling**: CSS (Global styles)
-
-### Development Tools
-- **Package Manager**: npm
-- **Code Quality**:
-  - ESLint for linting
-  - Prettier for code formatting
-- **Type Checking**: TypeScript with strict mode
-- **Editor**: VSCode with recommended extensions
-
-## Development Environment
-
-### Required Software
-- Node.js 22+
-- npm (latest version)
-- VSCode (recommended)
-- Git
-
-### VSCode Extensions
-- ESLint
-- Prettier
-- Astro
-- TypeScript and JavaScript Language Features
-
-### Configuration Files
-```
-blog/
-├── .eslintrc.cjs        # ESLint configuration
-├── .prettierrc          # Prettier configuration
-├── astro.config.mjs     # Astro configuration
-├── package.json         # Project dependencies
-└── tsconfig.json        # TypeScript configuration
+## 主要技術スタック
+```mermaid
+graph TD
+    A[Astro 5.3.0] --> B[TypeScript]
+    A --> C[React]
+    A --> D[Node.js]
+    B --> E[型安全性]
+    C --> F[インタラクティブコンポーネント]
+    D --> G[開発サーバー/ビルド]
 ```
 
-## Dependencies
+## フレームワーク・ライブラリ
+1. Astro 5.3.0
+   - 静的サイト生成
+   - パフォーマンス最適化
+   - コンポーネントアイランド
 
-### Core Dependencies
-- astro: ^5.3.0
-- @astrojs/rss: For RSS feed generation
-- typescript: For type checking
+2. TypeScript
+   - 型安全性の確保
+   - 開発効率の向上
+   - コード品質の維持
 
-### Development Dependencies
-- eslint
-- prettier
-- typescript
-- various astro integrations
+3. React (Astro内で使用)
+   - インタラクティブコンポーネント
+   - 状態管理
+   - UIライブラリ統合
 
-## Build & Development
+## 開発ツール
+1. リンター/フォーマッター
+   - ESLint: コード品質チェック
+   - Prettier: コードフォーマット
+   - textlint: 文章校正
 
-### Development Server
-```bash
-npm run dev
-```
-- Hot module replacement
-- Local development server
-- Fast refresh
+2. バージョン管理
+   - Git
+   - GitHub
 
-### Production Build
-```bash
-npm run build
-```
-- Static site generation
-- Asset optimization
-- Type checking
+3. パッケージ管理
+   - npm
+   - package.json による依存関係管理
 
-### Preview
-```bash
-npm run preview
-```
-- Local preview of production build
+## ビルド・デプロイ
+1. ビルドプロセス
+   - Astroビルドシステム
+   - アセット最適化
+   - バンドル生成
 
-## Testing & Quality Assurance
+2. 開発サーバー
+   - ホットリロード
+   - 開発者ツール
+   - デバッグ機能
 
-### Linting
-```bash
-npm run lint
-```
-- ESLint for code quality
-- Prettier for code formatting
-
-### Type Checking
-- TypeScript in strict mode
-- Type checking during build
-
-## Deployment
-
-### Build Output
-- Static files
-- Optimized assets
-- Pre-rendered pages
-
-### Requirements
-- Static file hosting
-- HTTPS support
-- Asset serving capability
-
-## Performance Considerations
-
-### Optimization Techniques
-- Static site generation
-- Image optimization
-- Minimal JavaScript
-- CSS optimization
-
-### Monitoring
-- Lighthouse scores
-- Core Web Vitals
-- Page load metrics
-
-## Security
-
-### Content Security
-- Static site security
-- Asset integrity
-- Safe content rendering
-
-### Development Security
-- Dependency scanning
-- Code review process
-- Secure configuration
-
-## Documentation Standards
-
-### Code Documentation
-- TypeScript types
-- JSDoc comments
-- Component documentation
-- Utility function documentation
-
-### Content Documentation
-- Markdown frontmatter
-- Content type definitions
-- Asset organization guidelines
+## パフォーマンス最適化
+- 画像最適化
+- コードスプリッティング
+- キャッシュ戦略
+- レンダリング最適化

@@ -1,43 +1,43 @@
-# Project Brief: Technical Blog Platform
+# プロジェクト概要
 
-## Project Overview
-A modern, performance-focused blog platform built with Astro, designed to serve technical content with optimal performance and developer experience.
+## 目的
+Astroを使用した技術ブログサイトの開発
 
-## Core Requirements
+## コアコンポーネント
+- ブログ記事の執筆・公開機能
+- レスポンシブデザイン
+- SEO対応
+- RSS配信
 
-### Functional Requirements
-- Content Management:
-  - Markdown-based blog post authoring
-  - Support for technical content including code snippets
-  - Image and media handling
-  - RSS feed generation
-  - Blog post categorization and organization
+## 技術スタック
+- Astro 5.3.0
+- TypeScript
+- React (Astroコンポーネント内で使用)
+- Node.js
 
-### Technical Requirements
-- Built with Astro 5.3.0
-- TypeScript support
-- Modern web performance optimizations
-- Responsive design
-- SEO optimization
-- Clean and maintainable codebase
+## ディレクトリ構造
+```
+/blog
+  /src
+    /components  # Astroコンポーネント
+    /content    # ブログコンテンツ
+    /layouts    # レイアウトテンプレート
+    /pages      # ページコンポーネント
+    /plugins    # カスタムプラグイン
+    /styles     # CSSスタイル
+    /utils      # ユーティリティ関数
+  /public       # 静的アセット
+```
 
-### Quality Requirements
-- Type safety with TypeScript
-- Consistent code formatting (Prettier)
-- Code quality enforcement (ESLint)
-- High performance metrics
-- Accessible design
+## 要件
+1. 記事の作成と管理が容易であること
+2. パフォーマンスに優れていること（静的サイト生成）
+3. SEOフレンドリーな構造
+4. モバイルファーストのレスポンシブデザイン
+5. アクセシビリティへの配慮
 
-## Project Goals
-1. Provide an excellent platform for technical content delivery
-2. Maintain high performance and SEO standards
-3. Enable easy content management through Markdown
-4. Ensure good developer experience
-5. Support future scalability and maintenance
-
-## Success Metrics
-- Page load performance
-- SEO scores
-- Content authoring efficiency
-- Code maintainability
-- Development velocity
+## 品質基準
+- TypeScriptによる型安全性の確保
+- ESLintとPrettierによるコード品質の維持
+- アクセシビリティガイドラインへの準拠
+- パフォーマンス指標の達成目標設定

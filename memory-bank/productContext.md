@@ -1,71 +1,34 @@
-# Product Context: Technical Blog Platform
+# プロダクトコンテキスト
 
-## Purpose & Problem Space
-This blog platform exists to address several key needs in technical content delivery:
-1. Need for a fast, efficient platform for technical writing
-2. Requirement for excellent code snippet presentation
-3. Desire for modern web performance without sacrificing developer experience
-4. Need for straightforward content management using Markdown
+## 背景と目的
+- 技術的な知見や経験を共有するためのブログプラットフォーム
+- 開発者コミュニティへの貢献と知識の還元
+- 個人の技術力向上とドキュメンテーションスキルの向上
 
-## User Experience Goals
+## ターゲットユーザー
+1. プログラマー・エンジニア
+2. 技術に興味のある学習者
+3. IT業界の専門家
 
-### Content Consumers
-- Fast page loads and smooth navigation
-- Clear, readable technical content
-- Easy access to related articles
-- Optimal reading experience across devices
-- Quick access to RSS feeds for updates
+## 解決する課題
+- 技術情報の整理と共有
+- 開発知識のドキュメント化
+- 技術的なベストプラクティスの普及
 
-### Content Authors
-- Simple Markdown-based content creation
-- Efficient image and media management
-- Straightforward content organization
-- Easy integration of code examples
-- Preview capabilities for content
+## ユーザー体験目標
+- 記事の見つけやすさ
+- 読みやすい文章とレイアウト
+- スムーズな記事間の移動
+- 効率的な情報取得
 
-## Content Strategy
+## コンテンツ戦略
+1. 技術記事の定期的な投稿
+2. カテゴリ分けによる整理
+3. タグシステムによる関連記事の提示
+4. RSS配信による更新通知
 
-### Blog Post Types
-1. Technical Tutorials
-   - Step-by-step guides
-   - Code examples and explanations
-   - Implementation details
-   
-2. Development Experience
-   - Project insights
-   - Problem-solving approaches
-   - Learning experiences
-   
-3. Technology Updates
-   - New tool adoptions
-   - Migration experiences
-   - Technology comparisons
-
-### Content Organization
-- Clear categorization
-- Chronological ordering
-- Related content linking
-- Easy navigation structure
-
-## Design Philosophy
-- Content-first approach
-- Clean, distraction-free reading experience
-- Optimized code block presentation
-- Responsive design for all devices
-- Accessibility as a core feature
-
-## Success Indicators
-1. Reader Engagement
-   - Time spent on articles
-   - Navigation patterns
-   - Return visits
-   
-2. Content Management
-   - Ease of content creation
-   - Publishing efficiency
-   - Content organization effectiveness
-   
-3. Technical Performance
-   - Load times
-   - Core Web Vitals
-   - SEO performance
+## 期待される成果
+- 技術コミュニティへの貢献
+- 個人のブランディング強化
+- 知識の体系化と再利用性の向上
+- 開発者間の知識共有促進
