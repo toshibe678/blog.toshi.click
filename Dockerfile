@@ -24,6 +24,11 @@ RUN npm install -g \
 ##           playwright install webkit \
 ##           playwright install
 
+# SSH設定: github.com向けのホスト鍵チェックを無効化
+RUN mkdir -p /root/.ssh && \
+    echo "Host github.com\n\tStrictHostKeyChecking no\n" > /root/.ssh/config && \
+    chmod 600 /root/.ssh/config
+
 WORKDIR /app
 
 ## astroが動くポートを開けておく
