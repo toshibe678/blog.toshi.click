@@ -26,6 +26,4 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 
-blog-old
-tmp
 node_modules
