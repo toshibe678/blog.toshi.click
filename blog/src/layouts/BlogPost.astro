@@ -1,51 +1,102 @@
 ---
+// 必要なコンポーネントとタイプのインポート
 import type { CollectionEntry } from 'astro:content';
 import BaseHead from '../components/BaseHead.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import FormattedDate from '../components/FormattedDate.astro';
 
+// ブログ投稿のデータ型を定義
 type Props = CollectionEntry<'blog'>['data'];
 
-const { title, description, pubDate, updatedDate, image } = Astro.props;
-
+// Astroのpropsからブログ投稿データを取得
+const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 ---
-<html lang="ja">
-  <head>
-    <BaseHead title={title} description={description} />
-    <style>
-      .title {
-        font-size: 2em;
-        margin: 0.25em 0 0;
-      }
-      hr {
-        border-top: 1px solid #ddd;
-        margin: 1rem 0;
-      }
-      .last-updated-on {
-        font-style: italic;
-      }
-    </style>
-  </head>
 
-  <body>
-    <Header />
-    <main>
-      <article>
-        {image.url && <img width={240} height={120} src={image.url} alt={image.alt} />}
-        <h1 class="title">{title}</h1>
-        <FormattedDate date={pubDate} />
-        {
-          updatedDate && (
-            <div class="last-updated-on">
-              Last updated on <FormattedDate date={updatedDate} />
-            </div>
-          )
-        }
-        <hr />
-        <slot />
-      </article>
-    </main>
-    <Footer />
-  </body>
+<html lang="en">
+	<head>
+		<!-- メタデータとタイトル設定用のBaseHeadコンポーネント -->
+		<BaseHead title={title} description={description} />
+		<style>
+			/* ブログ投稿のレイアウトスタイル */
+			main {
+				width: calc(100% - 2em);
+				max-width: 100%;
+				margin: 0;
+			}
+			/* ヒーロー画像のコンテナスタイル */
+			.hero-image {
+				width: 100%;
+			}
+			/* ヒーロー画像のスタイル設定 */
+			.hero-image img {
+				display: block;
+				margin: 0 auto;
+				border-radius: 12px;
+				box-shadow: var(--box-shadow);
+			}
+			/* 記事本文のコンテナスタイル */
+			.prose {
+				width: 720px;
+				max-width: calc(100% - 2em);
+				margin: auto;
+				padding: 1em;
+				color: rgb(var(--gray-dark));
+			}
+			/* タイトルセクションのスタイル */
+			.title {
+				margin-bottom: 1em;
+				padding: 1em 0;
+				text-align: center;
+				line-height: 1;
+			}
+			/* h1タイトルのスタイル調整 */
+			.title h1 {
+				margin: 0 0 0.5em 0;
+			}
+			/* 投稿日付スタイル */
+			.date {
+				margin-bottom: 0.5em;
+				color: rgb(var(--gray));
+			}
+			/* 更新日表示のスタイル */
+			.last-updated-on {
+				font-style: italic;
+			}
+		</style>
+	</head>
+
+	<body>
+		<!-- ヘッダーコンポーネント（ナビゲーションなど） -->
+		<Header />
+		<main>
+			<article>
+				<!-- ヒーロー画像の表示（存在する場合） -->
+				<div class="hero-image">
+					{heroImage && <img width={1020} height={510} src={heroImage} alt="" />}
+				</div>
+				<!-- 記事本文コンテンツエリア -->
+				<div class="prose">
+					<!-- タイトルと日付情報セクション -->
+					<div class="title">
+						<div class="date">
+							<!-- 投稿日を表示 -->
+							<FormattedDate date={pubDate} />
+							{
+                /* 更新日がある場合のみ表示 */
+								updatedDate && (
+									<div class="last-updated-on">Last updated on <FormattedDate date={updatedDate} />
+									</div>
+								)
+							}
+						</div>
+						<h1>{title}</h1>
+						<hr />
+					</div>
+					<slot />
+				</div>
+			</article>
+		</main>
+		<Footer />
+	</body>
 </html>

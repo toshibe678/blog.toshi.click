@@ -3,9 +3,7 @@ title: "React Nativeことはじめ"
 pubDate: "2018-04-13"
 updatedDate: "2022-05-10"
 description: ''
-image:
-    url: '/images/header/computer_screen_programming.png' 
-    alt: ''
+heroImage: '/images/header/computer_screen_programming.png' 
 tags: ['Android','iOS','JavaScript','プログラミング','開発環境']
 ---
 # はじめに
@@ -97,7 +95,7 @@ cd [プロジェクト名]
 npm start
 ```
 
-![](/blog/public/images/development-0002/prompt.png)
+![](/images/development-0002/prompt.png)
 
 案内が上記のように画面に出ますので、QR コードを撮影するか exp://から始まるアドレスへ Xpo アプリから接続してください。  
 コマンドプロンプトやコンソールを閉じると切れてしまうので注意！

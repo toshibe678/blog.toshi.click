@@ -1,0 +1,69 @@
+# Linter and Formatter Setup Knowledge
+
+## Overview
+This document describes the setup and configuration of linters and formatters for both JavaScript/TypeScript and documentation files in our project structure.
+
+## Details
+
+### 1. JavaScript/TypeScript (Astro) Setup
+- Location: /blog directory
+- Tools:
+  - ESLint with TypeScript support
+  - Prettier with Astro plugin
+- Key Files:
+  - .eslintrc.cjs: ESLint configuration
+  - .prettierrc: Prettier configuration
+- NPM Scripts:
+  - lint: Code checking
+  - lint:fix: Auto-fix issues
+  - format: Code formatting
+
+### 2. Documentation Setup
+- Location: Root directory (excluding /blog)
+- Tools:
+  - textlint for Markdown
+  - yamllint for YAML
+- Key Files:
+  - .textlintrc: textlint configuration
+  - .yamllint: yamllint configuration
+  - lint-docs.sh: Shell script for running linters
+
+### 3. Global Tool Installation
+Important: Always add global tool installations to Dockerfile
+- NPM global packages:
+  ```dockerfile
+  RUN npm install -g \
+      textlint \
+      textlint-rule-preset-ja-technical-writing \
+      textlint-rule-preset-japanese \
+      textlint-rule-prh \
+      textlint-rule-spellcheck-tech-word
+  ```
+- System packages:
+  ```dockerfile
+  RUN apt-get update && apt-get install -y \
+      yamllint \
+      python3-pathspec \
+      && rm -rf /var/lib/apt/lists/*
+  ```
+
+### 4. Best Practices
+1. Global Tool Installation:
+   - Always document in Dockerfile
+   - Includes npm global packages
+   - Includes system packages (apt, pip, etc.)
+
+2. Project-specific Dependencies:
+   - Use package.json for project-level npm packages
+   - Install locally in project directory
+
+3. Configuration Files:
+   - Keep configurations at appropriate levels
+   - Root level for documentation tools
+   - Project level for development tools
+
+## References
+- ESLint Documentation: https://eslint.org/docs/latest/
+- Prettier Documentation: https://prettier.io/docs/en/
+- textlint Documentation: https://textlint.github.io/
+- yamllint Documentation: https://yamllint.readthedocs.io/

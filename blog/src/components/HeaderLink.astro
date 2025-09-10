@@ -1,24 +1,35 @@
 ---
+// HTML要素<a>の属性の型をインポート
 import type { HTMLAttributes } from 'astro/types';
 
+// コンポーネントのPropsの型定義。アンカータグの全HTML属性を継承
 type Props = HTMLAttributes<'a'>;
 
+// Astro.propsから必要な属性を分割代入。href、クラス名、その他のプロパティを個別に取得
 const { href, class: className, ...props } = Astro.props;
-
-const { pathname } = Astro.url;
-const isActive = href === pathname || href === pathname.replace(/\/$/, '');
+// 現在のページのパス名を取得し、環境変数で設定されたベースURLを除去
+const pathname = Astro.url.pathname.replace(import.meta.env.BASE_URL, '');
+// パス名を「/」で区切り、最初のセグメントを取得するための正規表現マッチング
+const subpath = pathname.match(/[^\/]+/g);
+// 現在のリンクがアクティブかどうかを判定
+// 1. hrefが完全なパス名と一致する、または
+// 2. hrefが「/」+最初のパスセグメント（存在する場合）と一致する場合
+const isActive = href === pathname || href === '/' + (subpath?.[0] || '');
 ---
 
+<!-- リンク要素を描画。class:listディレクティブを使用して条件付きでactiveクラスを適用 -->
 <a href={href} class:list={[className, { active: isActive }]} {...props}>
-  <slot />
+	<slot />
 </a>
+
+<!-- コンポーネントのスタイル定義 -->
 <style>
-  a {
-    display: inline-block;
-    text-decoration: none;
-  }
-  a.active {
-    font-weight: bolder;
-    text-decoration: underline;
-  }
+	a {
+		display: inline-block; /* インラインブロック要素として表示 */
+		text-decoration: none; /* 下線を非表示 */
+	}
+	a.active {
+		font-weight: bolder; /* アクティブな場合は太字に */
+		text-decoration: underline; /* アクティブな場合は下線を表示 */
+	}
 </style>

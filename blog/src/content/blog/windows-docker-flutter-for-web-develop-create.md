@@ -3,9 +3,7 @@ title: "WindowsのDockerでFlutter for Web（開発環境構築）"
 pubDate: "2021-03-26"
 updatedDate: "2022-05-10"
 description: ''
-image:
-    url: '/images/header/website_kensaku_top.png' 
-    alt: ''
+heroImage: '/images/header/website_kensaku_top.png' 
 tags: ['Docker','Windows','開発環境']
 ---
 

@@ -3,9 +3,7 @@ title: "Docker Desktop導入手順"
 pubDate: "2019-07-08"
 updatedDate: "2022-05-10"
 description: ''
-image:
-    url: '/images/header/magnifier_animal_inu.png' 
-    alt: ''
+heroImage: '/images/header/magnifier_animal_inu.png' 
 tags: ['Docker','Mac','Windows','インフラ','開発環境']
 ---
 ## Docker Desktopとは？
@@ -43,7 +41,7 @@ Windows で`Hyper-V`を使用するには下記使用要件([公式の使用要�
 #### Hyper-Vを有効化する(GUI)
 スタート＞設定＞アプリ＞プログラムと機能＞Windows の機能の有効化または無効化を開き Hyper-V にチェックを付けて OK。
 
-![](images/docker_desktop_01.jpg)
+![](/images/docker_desktop_01.jpg)
 
 ※ OS 再起動が必要になります。
 
@@ -70,21 +68,21 @@ Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V -All
 1. アカウントを登録
    下記のような画面が表示されますので、`Sign in / Create a Docker ID`でアカウント登録してください。
 
-    ![](/blog/public/images/docker_desktop/docker_desktop_mac1.png)
+    ![](/images/docker_desktop/docker_desktop_mac1.png)
 1. Mac のメニューバーに Docker のアイコンが表示されたら完了です。
 
-    ![](/blog/public/images/docker_desktop/docker_desktop_mac2.png)
+    ![](/images/docker_desktop/docker_desktop_mac2.png)
 
 ## Docker Desktopの設定
 
 ### 共有設定(Windowsのみ)
 ホストのディレクトリをコンテナマウントする際に共有の設定、許可をしていないといけないため設定します。
 
-タスクトレイのクジラアイコン![](/blog/public/images/docker_desktop/docker_desktop_win_1.jpg)を右クリック＞`Setting`をクリック。
+タスクトレイのクジラアイコン![](/images/docker_desktop/docker_desktop_win_1.jpg)を右クリック＞`Setting`をクリック。
 
 Settings ウィンドウが表示されるので、Shared Drives をクリックします。
 
-![](/blog/public/images/docker_desktop/docker_desktop_win_2.jpg)
+![](/images/docker_desktop/docker_desktop_win_2.jpg)
 
 共有を許可するドライブにチェックを入れて、Apply をクリックします。
 
@@ -101,10 +99,10 @@ Settings ウィンドウが表示されるので、Shared Drives をクリック
     ```
 尚、Docker の Shared Drives 設定で以下のようなファイルシステム認証画面が出た場合は、ホスト PC のユーザ名（ログインアカウント）とパスワードを入力して認証すれば OK！
 
-![](/blog/public/images/docker_desktop/docker_desktop_win_error1.jpg)
+![](/images/docker_desktop/docker_desktop_win_error1.jpg)
 
 ### Hyper-Vが有効になっていない場合
-![](/blog/public/images/docker_desktop/docker_desktop_win_error2.jpg)
+![](/images/docker_desktop/docker_desktop_win_error2.jpg)
 
 上のようなプロンプトが表示されるので、`Hyper-V`を有効化させてください。
 

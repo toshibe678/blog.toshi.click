@@ -3,9 +3,7 @@ title: "私のブログ ホスティングの歴史"
 pubDate: "2023-05-01"
 updatedDate: "2023-05-01"
 description: '私のブログ ホスティングの歴史'
-image:
-    url: '/images/header/computer_programming_man.png' 
-    alt: ''
+heroImage: '/images/header/computer_programming_man.png' 
 tags: ["js","雑記"]
 ---
 

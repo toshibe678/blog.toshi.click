@@ -5,16 +5,19 @@ import Footer from '../components/Footer.astro';
 import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 ---
 
-<!DOCTYPE html>
-<html lang="ja">
-  <head>
-    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-  </head>
-  <body>
-    <Header title={SITE_TITLE} />
-    <main>
-      <h1>しがないITインフラエンジニアの雑記</h1>
-    </main>
-    <Footer />
-  </body>
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+	</head>
+	<body>
+		<Header />
+		<main>
+			<h1>しがないITエンジニアの雑記</h1>
+			<p>
+				ほげほげ
+			</p>
+		</main>
+		<Footer />
+	</body>
 </html>

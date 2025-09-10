@@ -1,0 +1,32 @@
+Date: 20250315
+Topic: Knowledge Management System Implementation
+
+1. Overview
+This document describes the knowledge management system implemented for our development process. The system is designed to capture, store, and share technical knowledge and learnings across the development team.
+
+2. Details
+2.1 Directory Structure
+- All knowledge files are stored in the `/app/knowledge` directory
+- Files are named using the format: YYYYMMDD_topic.txt
+- Content is written in English to ensure accessibility
+
+2.2 File Structure
+Each knowledge file must contain:
+a) Date: YYYYMMDD format
+b) Topic: Brief, descriptive title
+c) Content sections:
+   - Overview: High-level summary
+   - Details: In-depth explanation
+   - References: Related resources, links, docs
+
+2.3 Best Practices
+- Keep content focused and specific
+- Include code examples when relevant
+- Link to related knowledge files
+- Update existing files when new information becomes available
+- Use clear, concise language
+
+3. References
+- Project .clinerules file
+- Development team guidelines
+- Documentation best practices

@@ -19,7 +19,7 @@ jobs:
       packages: write
 
     container:
-      image: ghcr.io/toshibe678/blog.toshi.click/node:latest
+      image: ghcr.io/toshibe678/blog.toshi.click/blog:latest
       credentials:
         username: ${{ github.actor }}
         password: ${{ secrets.GITHUB_TOKEN }}
@@ -27,19 +27,21 @@ jobs:
     # nodeのバージョン一覧
     strategy:
       matrix:
-        node-version: ['18.x']
+        node-version: ["22.x"]
     # 各ステップの実行定義
     steps:
       # チェックアウト
       - uses: actions/checkout@main
 
       # パッケージのインストール
-      - name: yarn install
-        run: yarn --cwd ./blog install
+      - name: npm install
+        working-directory: ./blog
+        run: npm install
 
       # アプリのビルド
       - name: build
-        run: yarn --cwd ./blog build
+        working-directory: ./blog
+        run: npm run build
 
       # S3にデプロイ
       - name: Stg Deploy

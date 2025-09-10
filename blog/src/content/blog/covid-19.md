@@ -3,9 +3,7 @@ title: "Covid-19感染体験記"
 pubDate: "2022-08-04"
 updatedDate: "2022-08-04"
 description: ''
-image:
-    url: '/images/header/medical_vaccine_covid19.png' 
-    alt: ''
+heroImage: '/images/header/medical_vaccine_covid19.png' 
 tags: ["日常"]
 ---
 # 概要
